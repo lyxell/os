@@ -68,7 +68,8 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     xdo \
     xinit \
     xinput \
-    xserver-xorg'
+    xserver-xorg-video-intel \
+    xserver-xorg-input-all'
 
 # Install non-essential packages
 sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -164,6 +165,9 @@ echo "HandleLidSwitch=ignore" | sudo tee --append build/etc/systemd/logind.conf
 # Install system wide wifi connections
 sudo cp -r system-connections/* $BUILDDIR/etc/NetworkManager/system-connections
 sudo chmod -R 700 $BUILDDIR/etc/NetworkManager/system-connections
+
+# Xorg config
+sudo cp 20-intel-graphics.conf $BUILDDIR/etc/X11/xorg.conf.d/
 
 # Run apt clean
 sudo chroot $BUILDDIR apt-get clean
