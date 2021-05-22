@@ -79,6 +79,7 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     espeak-ng \
     ffmpeg \
     file \
+    fonts-texgyre \
     fzf \
     git \
     less \
@@ -87,36 +88,36 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     links \
     make \
     man \
+    manpages-dev \
     mpv \
     neomutt \
     neovim \
     pandoc \
     playerctl \
+    polybar
     procps \
     psmisc \
     python3 \
-    manpages-dev \
     qutebrowser \
     rxvt-unicode \
     silversearcher-ag \
     sxiv \
+    texlive-bibtex-extra \
     texlive-latex-base \
     texlive-latex-extra \
     texlive-latex-recommended \
     texlive-luatex \
     texlive-pictures \
-    texlive-bibtex-extra \
-    fonts-texgyre \
     tree \
     unclutter \
     unrar \
+    wget \
     xclip \
     xdotool \
     xfonts-utils \
     xxd \
     xz-utils \
     youtube-dl \
-    wget \
     zathura \
     zathura-djvu'
 
