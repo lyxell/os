@@ -153,10 +153,6 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
 sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libsdl2-dev\
     re2c'
-## Java
-sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    maven \
-    default-jdk'
 
 # No password to set brightness
 echo "user ALL=(ALL) NOPASSWD:/usr/bin/brightnessctl" | sudo tee $BUILDDIR/etc/sudoers.d/brightnessctl
