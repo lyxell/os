@@ -127,6 +127,37 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     bluez-firmware \
     bluez'
 
+# Thesis project
+## Souffle
+sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    autoconf \
+    automake \
+    bison \
+    build-essential \
+    clang \
+    doxygen \
+    flex \
+    g++ \
+    gcc \
+    git \
+    libffi-dev \
+    libncurses5-dev \
+    libtool \
+    libsqlite3-dev \
+    make \
+    mcpp \
+    python \
+    sqlite \
+    zlib1g-dev'
+## UI
+sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    libsdl2-dev\
+    re2c'
+## Java
+sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    maven \
+    default-jdk'
+
 # No password to set brightness
 echo "user ALL=(ALL) NOPASSWD:/usr/bin/brightnessctl" | sudo tee $BUILDDIR/etc/sudoers.d/brightnessctl
 sudo chmod 440 $BUILDDIR/etc/sudoers.d/brightnessctl
@@ -145,16 +176,11 @@ sudo chroot $BUILDDIR useradd user \
     --groups sudo \
     --password auYCUPgS0kJzQ
 
-# Create home dir for user and install dotfiles
+# Create home dir for user
 sudo mkdir -p build/home/user/projects
 sudo mkdir -p build/home/user/.cache
 sudo mkdir -p build/home/user/.local/share
 sudo chown -R user:user build/home/user
-git clone git@git.sr.ht:~lyxell/dotfiles build/home/user/projects/dotfiles
-sudo chroot --userspec=user:user $BUILDDIR env \
-    -i HOME=/home/user bash -c 'cd $HOME/projects/dotfiles && ./install.sh'
-git clone git@git.sr.ht:~lyxell/quadratica build/home/user/projects/quadratica
-sudo chroot --userspec=user:user $BUILDDIR sh -c 'cd /home/user/projects/quadratica && make && mkdir -p /home/user/.local/share/fonts && cp build/quadratica.otb /home/user/.local/share/fonts'
 
 # Enable bitmap fonts
 sudo rm -rf build/etc/fonts/conf.d/70-no-bitmaps.conf
