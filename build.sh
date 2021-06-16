@@ -108,6 +108,7 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     texlive-latex-recommended \
     texlive-luatex \
     texlive-pictures \
+    texlive-plain-generic \
     tree \
     unclutter \
     unrar \
@@ -129,6 +130,10 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     bluez'
 
 # Thesis project
+## Report
+sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    fonts-stix \
+    python3-pygments'
 ## Souffle
 sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     autoconf \
