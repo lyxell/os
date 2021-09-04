@@ -76,14 +76,20 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     bash-completion \
     biber \
     brightnessctl \
+    cmake \
     espeak-ng \
     ffmpeg \
     file \
+    fonts-firacode \
     fonts-texgyre \
     fzf \
     git \
     less \
+    libfontconfig-dev \
     libjs-pdf \
+    libxcb-render0-dev \
+    libxcb-shape0-dev \
+    libxcb-xfixes0-dev \
     libxml-xpath-perl \
     links \
     make \
@@ -92,6 +98,7 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     mpv \
     neomutt \
     neovim \
+    ninja-build \
     pandoc \
     playerctl \
     polybar
@@ -112,6 +119,7 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     tree \
     unclutter \
     unrar \
+    unzip \
     wget \
     xclip \
     xdotool \
