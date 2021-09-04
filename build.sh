@@ -98,7 +98,6 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     manpages-dev \
     mpv \
     neomutt \
-    neovim \
     ninja-build \
     pandoc \
     playerctl \
