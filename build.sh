@@ -76,6 +76,7 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     bash-completion \
     biber \
     brightnessctl \
+    clangd \
     cmake \
     espeak-ng \
     ffmpeg \
