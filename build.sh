@@ -3,7 +3,7 @@
 set -exu
 
 ARCH=amd64
-SUITE=sid
+SUITE=bullseye
 BUILDDIR=build
 MIRROR=https://mirror.linux.pizza/debian/
 ARTIFACT=filesystem.squashfs
@@ -97,6 +97,7 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     man \
     manpages-dev \
     mpv \
+    neovim \
     neomutt \
     ninja-build \
     pandoc \
@@ -160,7 +161,6 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libsqlite3-dev \
     make \
     mcpp \
-    sqlite \
     zlib1g-dev'
 ## UI
 sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -190,6 +190,8 @@ sudo mkdir -p build/home/user/projects
 sudo mkdir -p build/home/user/.cache
 sudo mkdir -p build/home/user/.local/share
 sudo chown -R user:user build/home/user
+git clone git@github.com:lyxell/dotfiles.git build/home/user/projects/dotfiles
+sudo chroot --userspec=user:user $BUILDDIR sh -c 'cd ~/projects/dotfiles && ./install.sh'
 
 # Enable bitmap fonts
 sudo rm -rf build/etc/fonts/conf.d/70-no-bitmaps.conf
