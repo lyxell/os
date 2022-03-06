@@ -191,7 +191,7 @@ sudo mkdir -p build/home/user/.cache
 sudo mkdir -p build/home/user/.local/share
 sudo chown -R user:user build/home/user
 git clone git@github.com:lyxell/dotfiles.git build/home/user/projects/dotfiles
-sudo chroot --userspec=user:user $BUILDDIR sh -c 'cd ~/projects/dotfiles && ./install.sh'
+sudo chroot --userspec=user:user $BUILDDIR sh -c 'HOME=/home/user && cd ~/projects/dotfiles && ./install.sh'
 
 # Enable bitmap fonts
 sudo rm -rf build/etc/fonts/conf.d/70-no-bitmaps.conf
