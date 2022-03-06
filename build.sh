@@ -160,7 +160,6 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libsqlite3-dev \
     make \
     mcpp \
-    python \
     sqlite \
     zlib1g-dev'
 ## UI
