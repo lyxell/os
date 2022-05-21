@@ -101,6 +101,8 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     mpv \
     neomutt \
     ninja-build \
+    nodejs \
+    npm \
     pandoc \
     playerctl \
     polybar \
@@ -195,6 +197,12 @@ sudo mkdir -p build/home/user/.local/share
 sudo chown -R user:user build/home/user
 git clone git@github.com:lyxell/dotfiles.git $BUILDDIR/home/user/projects/dotfiles
 sudo chroot --userspec=user:user $BUILDDIR sh -c 'HOME=/home/user && cd ~/projects/dotfiles && ./install.sh'
+
+# Install nodejs
+sudo chroot $BUILDDIR sh -c 'curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && apt install -y nodejs'
+
+# Install typescript language server
+sudo chroot $BUILDDIR npm install -g typescript-language-server typescript
 
 # Install neovim
 wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb -O build/home/user/projects/nvim-0.7.0.deb
