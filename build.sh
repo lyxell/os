@@ -3,7 +3,7 @@
 set -exu
 
 ARCH=amd64
-SUITE=bullseye
+SUITE=bookworm
 BUILDDIR=build
 MIRROR=https://mirror.linux.pizza/debian/
 ARTIFACT=filesystem.squashfs
@@ -97,8 +97,8 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     man \
     manpages-dev \
     mpv \
-    neovim \
     neomutt \
+    neovim \
     ninja-build \
     pandoc \
     playerctl \
@@ -121,6 +121,7 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     unclutter \
     unrar \
     unzip \
+    upower \
     wget \
     xclip \
     xdotool \
