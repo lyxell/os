@@ -2,8 +2,8 @@
 
 set -exu
 
-DISK=/dev/sdb
-PARTITION=/dev/sdb1
+DISK=/dev/sda
+PARTITION=/dev/sda1
 MOUNTPOINT=usbmnt
 ARTIFACT=filesystem.squashfs
 

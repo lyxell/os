@@ -63,9 +63,10 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     pulseaudio \
     sudo \
     tzdata \
+    wpasupplicant \
     x11-xserver-utils \
-    xdotool \
     xdo \
+    xdotool \
     xinit \
     xinput \
     xserver-xorg-video-intel \
@@ -130,7 +131,8 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     xz-utils \
     youtube-dl \
     zathura \
-    zathura-djvu'
+    zathura-djvu \
+    zstd'
 
 # Bluetooth audio
 sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
