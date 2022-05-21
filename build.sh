@@ -100,7 +100,6 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     manpages-dev \
     mpv \
     neomutt \
-    neovim \
     ninja-build \
     pandoc \
     playerctl \
@@ -194,14 +193,23 @@ sudo mkdir -p build/home/user/projects
 sudo mkdir -p build/home/user/.cache
 sudo mkdir -p build/home/user/.local/share
 sudo chown -R user:user build/home/user
-git clone git@github.com:lyxell/dotfiles.git build/home/user/projects/dotfiles
+git clone git@github.com:lyxell/dotfiles.git $BUILDDIR/home/user/projects/dotfiles
 sudo chroot --userspec=user:user $BUILDDIR sh -c 'HOME=/home/user && cd ~/projects/dotfiles && ./install.sh'
 
+# Install neovim
+wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb -O build/home/user/projects/nvim-0.7.0.deb
+sudo chroot $BUILDDIR apt install -y /home/user/projects/nvim-0.7.0.deb
+git clone --depth 1 https://github.com/wbthomason/packer.nvim $BUILDDIR/home/user/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+
+# Improve touchpad behavior
+echo "options psmouse synaptics_intertouch=1" | sudo tee $BUILDDIR/etc/modprobe.d/psmouse.conf
+
 # Enable bitmap fonts
-sudo rm -rf build/etc/fonts/conf.d/70-no-bitmaps.conf
+sudo rm -rf $BUILDDIR/etc/fonts/conf.d/70-no-bitmaps.conf
 
 # Disable suspend on lid close
-echo "HandleLidSwitch=ignore" | sudo tee --append build/etc/systemd/logind.conf
+echo "HandleLidSwitch=ignore" | sudo tee --append $BUILDDIR/etc/systemd/logind.conf
 
 # Install system wide wifi connections
 sudo cp -r system-connections/* $BUILDDIR/etc/NetworkManager/system-connections
