@@ -60,7 +60,9 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     locales \
     network-manager \
     openssh-client \
-    pulseaudio \
+    pipewire \
+    pipewire-pulse \
+    pipewire-media-session \
     sudo \
     tzdata \
     wpasupplicant \
@@ -101,8 +103,6 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
     mpv \
     neomutt \
     ninja-build \
-    nodejs \
-    npm \
     pandoc \
     playerctl \
     polybar \
@@ -138,8 +138,7 @@ sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 # Bluetooth audio
 sudo chroot $BUILDDIR sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    pulseaudio-module-bluetooth \
-    pavucontrol \
+    libspa-0.2-bluetooth \
     bluez-firmware \
     bluez'
 
